@@ -1,0 +1,121 @@
+/*<div> with onClick should be <button> for accessibility.
+This class changes the button element to look like a div.
+Written first to be overwrite by tailwind or any other classes*/
+.div-style {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  text-align: inherit;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*Background pattern*/
+.bg-dots-darker {
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(0,0,0,0.07)'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  .dark .bg-dots-lighter {
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.07)'/%3E%3C/svg%3E");
+  }
+}
+
+/*Checkout rightSide resizable handler style*/
+.react-resizable {
+  position: relative;
+}
+.react-resizable-handle {
+  position: absolute;
+  display: none;
+  width: 10px;
+  height: 100%;
+  box-sizing: border-box;
+  /* background: url(/assets/grip-lines-vertical_10506574.svg)
+     center no-repeat #5e5e5e25; */
+  background-color: #5e5e5e35;
+  background-image: url(/assets/grip-lines-vertical_10506574.png);
+  opacity: 0.8;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: 19px 50px;
+}
+@media (min-width: 720px) {
+  .react-resizable-handle {
+    display: block;
+  }
+}
+.react-resizable-handle:active {
+  background-color: #9e9e9eb6;
+}
+.react-resizable-handle-w {
+  cursor: col-resize;
+  left: 0;
+  transition: background-color 100ms ease-in-out;
+}
+
+/* Remove arrow from Input element of type number by using remove-arrow class*/
+.remove-arrow::-webkit-inner-spin-button,
+.remove-arrow::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.remove-arrow {
+  -moz-appearance: textfield;
+}
+
+/* Hamburger button is shown on the <MobileMenu /> component*/
+/* Hamburger button */
+.hamburger svg > *:nth-child(1),
+.hamburger svg > *:nth-child(2),
+.hamburger svg > *:nth-child(3) {
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+
+.hamburger svg > *:nth-child(1) {
+  transition:
+    y 0.1s 0.25s ease-in,
+    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    opacity 0.1s ease-in;
+}
+
+.hamburger svg > *:nth-child(2) {
+  transition: transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger svg > *:nth-child(3) {
+  transition:
+    y 0.1s 0.25s ease-in,
+    transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+    width 0.1s 0.25s ease-in;
+}
+
+.hamburger.active svg > *:nth-child(1) {
+  opacity: 0;
+  y: 11;
+  transform: rotate(225deg);
+  transition:
+    y 0.1s ease-out,
+    transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1),
+    opacity 0.1s 0.12s ease-out;
+}
+
+.hamburger.active svg > *:nth-child(2) {
+  transform: rotate(225deg);
+  transition: transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.hamburger.active svg > *:nth-child(3) {
+  y: 11;
+  transform: rotate(135deg);
+  transition:
+    y 0.1s ease-out,
+    transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1),
+    width 0.1s ease-out;
+}
